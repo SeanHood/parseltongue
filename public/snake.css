@@ -1,0 +1,32 @@
+/* CSS Document */
+
+.block, #fruit {
+  display: block;
+  position: fixed; 
+  height: 20px;
+}
+
+
+
+.block, #fruit, .head {
+  display: block;
+  position: fixed;
+  width: 20px;
+}
+
+.head, #head {
+  background: #662D91;
+  height: 16px !important; /* For the score! */
+  color: white;
+  padding: 0 0 4px 0;
+  line-height: 1;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Green fruit */
+#fruit {  background: #ff0000; !important }
+
+/* Other snake colour */
+.tail.two { background-color: #29ABE2 !important; }
+#head_two { background-color: blue !important; }

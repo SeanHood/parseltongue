@@ -1,0 +1,47 @@
+<script src="/socket.io/socket.io.js"></script>
+<script src="/jquery.min.js"></script>
+<script src="/snake3.js"></script>
+<script>
+
+
+// on load of page
+$(function(){
+
+window.snakes = 0;
+	
+	function playSnake(snakes) {
+	console.log('Snakes after func:' + window.snakes);
+	if(window.snakes == 0) {
+			$('head').append('<link rel="stylesheet" href="/snake.css" />');
+			$('<style type="text/css">#snake-stadium .head, #snake-stadium #fruit { width: 21px !important; background: url("http://media.tumblr.com/tumblr_llrky8yLQw1qzg5l8.png") no-repeat !important; } #snake-stadium .snake { width: 21px !important; opacity: 0.6; background: url("http://media.tumblr.com/tumblr_llrkzn0xBR1qzg5l8.png") no-repeat !important; } </style>').appendTo($('head'));
+			new Snake({colour: '#888888', tail_colour: '#888888', name: 'snake'});
+			window.snakes = 1;
+		} else {
+			console.log('Only 1 snake');
+		}
+	}
+
+	var socket = io.connect('http://localhost:8080');
+
+	// on connection to server, ask for user's name with an anonymous callback
+	socket.on('connect', function(){
+		// call the server-side function 'adduser' and send one parameter (value of prompt)
+		var player =  Math.floor(Math.random()*100);
+		socket.emit('newplayer',player);
+	});
+	
+	socket.on('updateplayers', function(data) {
+			$('#players').empty();
+			$('#players').append(Object.keys(data).length);
+			//console.log(Object.keys(data).length);
+		});
+	
+	socket.on('snakes', function () {
+		//alert('Hey'); // Snakes here
+		playSnake();
+	});
+
+});
+	
+</script>
+<span id="players"></span>
