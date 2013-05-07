@@ -6,7 +6,7 @@ Silly app I made with node.js & socket.io, starts a game of snake in the other w
 1. Clone the repo
 
 	```
-	git clone git://github.com/SeanHood/snakewhisperer.git
+	git clone git://github.com/SeanHood/parseltongue.git
   	```
 	
 2. Install all dependecies
@@ -26,5 +26,5 @@ Silly app I made with node.js & socket.io, starts a game of snake in the other w
 	```
 	http://localhost:8080
 	
-	http://localhost:8080/snakewhisperer
+	http://localhost:8080/parseltongue
 	```
